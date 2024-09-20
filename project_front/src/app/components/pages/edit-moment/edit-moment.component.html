@@ -1,0 +1,8 @@
+<mat-card *ngIf="moment">
+    <mat-card-header>
+        <mat-card-title>Editando o momento <span>{{moment.title}}</span></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <app-moment-form (onSubmit)="editHandler($event)" [momentData]="moment" [btnText]="btnText"></app-moment-form>
+    </mat-card-content>
+</mat-card>

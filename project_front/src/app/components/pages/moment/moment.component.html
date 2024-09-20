@@ -1,0 +1,72 @@
+<section *ngIf="moment">
+
+<mat-card >
+    <mat-card-header>
+        <mat-card-title>{{moment.title}}</mat-card-title>
+    </mat-card-header>
+
+    <img matCardImage src="{{baseUrl}}/uploads/{{moment.image}}" alt="{{moment.title}}"/>
+
+    <mat-card-content>
+        <h3>Sobre este momento</h3>
+        <p>{{moment.description}}</p>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+        <h4 class="title">Ações</h4>
+        <div>
+          <a routerLink="/moment/edit/{{moment.id}}" mat-raised-button color="primary">Editar</a>
+          <button mat-raised-button (click)="removeHandler(moment)">Excluir</button>
+        </div>
+    </mat-card-actions>
+</mat-card>
+
+<!-- Comentários -->
+
+<div class="comments">
+  <h3>Comment({{moment.comments!.length > 0 ? moment.comments!.length: 0}}):</h3>
+</div>
+
+<div *ngIf="moment.comments!.length > 0; else noComments">
+    <div class="comment-container" *ngFor="let comment of moment.comments">
+        <p class="comment">{{comment.text}}</p>
+        <p class="username">por: {{comment.username}}</p>
+    </div>
+</div>
+
+
+<ng-template #noComments>
+  <p>Nenhum comentário encontrado</p>
+</ng-template>
+
+<div fxLayout fxLayoutAlign="center center">
+  <mat-card class="form-comment">
+    <form [formGroup]="commentForm" #formDir="ngForm" (ngSubmit)="onSubmit(formDir)">
+      <mat-form-field class="form-field">
+        <mat-label>Comentários:</mat-label>
+          <textarea  formControlName="text" matInput placeholder=" O que você quer comentar "></textarea>
+      </mat-form-field>
+        <!-- exibir a mensage de validação -->
+    <div *ngIf="text.invalid && formDir.submitted" class="message-error">
+      <p *ngIf="text.errors?.['required']" color="accent"> O texto é obrigatório </p>
+    </div>
+
+      <mat-form-field class="form-field">
+        <mat-label>Nome:</mat-label>
+          <input formControlName="username" matInput placeholder="Digite o seu nome">
+      </mat-form-field>
+
+          <!-- exibir a mensage de validação -->
+    <div *ngIf="username.invalid && formDir.submitted" class="message-error">
+      <p *ngIf="username.errors?.['required']" color="accent"> O texto é obrigatório </p>
+    </div>
+
+      <button type="submit" mat-raised-button color="primary">Comentar</button>
+    </form>
+  </mat-card>
+</div>
+</section>
+
+
+
+

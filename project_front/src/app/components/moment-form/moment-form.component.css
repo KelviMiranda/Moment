@@ -1,0 +1,17 @@
+.example-form{
+  width: 60%;
+  margin: 0 auto;
+}
+
+.example-full-width{
+  width: 100%;
+}
+
+button{
+  margin-top: 1.5rem;
+}
+
+.message-error > p{
+  color: #DC3545;
+  margin-block: 1rem;
+}

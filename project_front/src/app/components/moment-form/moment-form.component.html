@@ -1,0 +1,33 @@
+<form class="example-form" (ngSubmit)="submit()" [formGroup]="moment" #formDir="ngForm">
+  <input type="hidden" formControlName="id"/>
+  <div>
+      <mat-form-field class="example-full-width" appearance="fill" color="primary">
+        <mat-label>Titulo</mat-label>
+        <input matInput placeholder="Coloque otitulo do momento" formControlName="title" required/>
+      </mat-form-field>
+    </div>
+    <!-- exibir a mensage de validação -->
+    <div *ngIf="title.invalid && formDir.submitted" class="message-error">
+      <p *ngIf="title.errors?.['required']" color="accent"> O título é obrigatório </p>
+    </div>
+
+    <div>
+      <mat-form-field class="example-full-width" appearance="fill" color="primary">
+        <mat-label>Descrição</mat-label>
+        <textarea matInput placeholder="Descreva o momento" formControlName="description"></textarea>
+      </mat-form-field>
+    </div>
+
+    <!-- message error -->
+    <div *ngIf="description.invalid && formDir.submitted" class="message-error">
+        <p *ngIf="description.errors?.['required']">A descrição é obrigatória</p>
+    </div>
+
+    <div>
+      <input type="file" (change)="onFileSelected($event)"/>
+    </div>
+
+    <div>
+      <button type="submit" mat-raised-button color="primary">{{btnText}}</button>
+    </div>
+  </form>

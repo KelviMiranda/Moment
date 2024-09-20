@@ -1,0 +1,25 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  background-color: #ffd9e1!important;
+  color: #ba005c !important;
+}
+
+mat-nav-list {
+  display: flex;
+  justify-content: center;
+  flex-basis: 40rem;
+}
+
+.brand h1{
+  font-size: 2rem;
+  font-weight: 700;
+
+}
+
+a {
+  text-align: center;
+  text-decoration: none;
+  color: #ba005c !important;
+}

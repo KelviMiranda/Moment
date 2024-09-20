@@ -1,0 +1,35 @@
+<div class="home-container"  fxLayout="column" fxLayoutGap="40px" fxLayoutAlign="center center">
+  <h2>Veja os momentos compartilhado</h2>
+  <!-- Form de busca -->
+  <div class="search-container">
+    <form>
+      <mat-form-field>
+          <mat-label>Pesquisar</mat-label>
+          <input matInput placeholder="Procure pelo seu evento"
+              (input)="search($event)"/>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <!-- Section card -->
+  <section class="cards" fxLayout fxLayoutGap="20px" fxLayoutAlign="center center">
+    <mat-card *ngFor="let moment of moments" fxFlex="30%" >
+      <img  matCardImage src="{{baseApiUrl}}/uploads/{{moment.image}}" alt="{{moment.title}}"/>
+      <mat-card-header>
+        <mat-card-title>{{moment.title}}</mat-card-title>
+        <mat-card-subtitle>Em: {{moment.created_at}}</mat-card-subtitle>
+    </mat-card-header>
+      <mat-card-content>
+            <p>{{moment.description}}</p>
+            <p></p>
+        </mat-card-content>
+
+        <mat-card-actions align="end">
+            <a routerLink="/moment/{{moment.id}}" mat-flat-button color="primary" >Detalhes</a>
+        </mat-card-actions>
+    </mat-card>
+  </section>
+  <ng-template #noMoments>
+    <h3> Nenhum momentos cadastrado</h3>
+  </ng-template>
+</div>

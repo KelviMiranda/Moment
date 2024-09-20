@@ -1,0 +1,34 @@
+
+.home-container{
+  padding-inline: 1.2rem;
+}
+
+.search-container{
+  margin: 0 auto;
+}
+
+
+
+h2{
+  text-align: center;
+  font-weight: 700;
+  font-size: 2rem;
+}
+mat-card{
+  padding: .5rem;
+  width: 100%;
+}
+
+.cards{
+  flex-wrap: wrap;
+}
+
+img{
+  object-fit: cover;
+  height: 20rem;
+  width: 100%;
+}
+
+.search-container{
+  width: 70%;
+}
